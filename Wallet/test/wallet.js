@@ -28,5 +28,13 @@ contract('Wallet', (accounts) => {
         assert(transfers[0].sent === false);
     });
 
+    it('Unhappypath should not create if not approved', async () => {
+        try {
+            await wallet.createTransfer(100, accounts[5], {from: accounts[4]});
+        } catch(e) {
+            console.log(e);
+        }
+    });
+
 
 });
