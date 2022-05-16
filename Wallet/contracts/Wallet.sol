@@ -64,7 +64,7 @@ contract Wallet {
                 allowed = true;
             }
         }
-        require(allowed == true, 'only apptover allowed');
+        require(allowed == true, 'only approver allowed');
         _;
 
     }
