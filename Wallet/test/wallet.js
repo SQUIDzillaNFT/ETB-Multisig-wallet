@@ -1,4 +1,5 @@
 const Wallet = artifacts.require('Wallet');
+const { expectRevert } = require('@openzeppelin/test-helpers');
 
 contract('Wallet', (accounts) => {
     let wallet; //assign integer
@@ -29,11 +30,10 @@ contract('Wallet', (accounts) => {
     });
 
     it('Unhappypath should not create if not approved', async () => {
-        try {
-            await wallet.createTransfer(100, accounts[5], {from: accounts[4]});
-        } catch(e) {
-            console.log(e);
-        }
+        await expectRevert(
+            wallet.createTransfer(100, accounts[5], {from: accounts[4]}),
+        'only approver allowed'
+        );
     });
 
 
