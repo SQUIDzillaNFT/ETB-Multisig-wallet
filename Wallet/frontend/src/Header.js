@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Header({approvers,quorum}) {
+function Header({approvers, quorum}) {
     return (
         <header>
             <ul>
