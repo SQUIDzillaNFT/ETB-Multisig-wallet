@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { getWeb3, getWattet } from './utils.js';
+import { getWeb3, getWallet } from './utils.js';
 import './App.css';
 import Header from './Header.js';
 
 function App() {
   const [web3, setWeb3] = useState(undefined);
-  const [accounts, setAccoutns] = useState(undefined);
+  const [accounts, setAccounts] = useState(undefined);
   const [wallet, setWallet] = useState(undefined);
-  const [approvers, setApprovers] = useState('undefined');
-  const [quorum, setQuorum] = useState('undefined');
+  const [approvers, setApprovers] = useState([]);
+  const [quorum, setQuorum] = useState(undefined);
 
   useEffect(() => {
     const init = async () => {
@@ -30,10 +30,10 @@ function App() {
     typeof web3 === 'undefined'
     || typeof accounts === 'undefined'
     || typeof wallet === 'undefined'
-    || typeof approvers === 'undefined'
+    || approvers.length === 0
     || typeof quorum === 'undefined'
   ) {
-    return <div> Loading...</div>
+    return <div> Loading...</div>;
   }
   
   return (
